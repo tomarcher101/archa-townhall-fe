@@ -20,7 +20,7 @@ const Feed = ({ posts, username }: FeedProps) => {
   }, [posts]);
 
   return (
-    <div className="flex h-full flex-col gap-2 overflow-y-scroll">
+    <div className="border-gray flex h-full flex-col gap-2 overflow-y-scroll rounded-md border px-2 pt-2">
       {posts.map((post) => (
         <FeedItem
           key={post.id}

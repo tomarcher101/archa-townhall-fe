@@ -20,7 +20,12 @@ const Button = ({ variant, onClick, children, disabled }: ButtonProps) => {
           'bg-red-600 text-white hover:bg-red-700 hover:shadow-md',
         disabled && 'cursor-not-allowed opacity-50',
       )}
-      onClick={onClick}
+      onClick={() => {
+        if (disabled) {
+          return;
+        }
+        onClick();
+      }}
     >
       {children}
     </button>

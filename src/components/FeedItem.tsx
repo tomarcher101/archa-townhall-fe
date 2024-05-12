@@ -19,7 +19,7 @@ const FeedItem = ({
     <div
       className={cn(
         'group rounded-md bg-slate-100 px-2 py-1',
-        isCurrentUser && 'bg-sky-100',
+        isCurrentUser && 'bg-sky-200',
       )}
     >
       <div className="flex-row-reversed flex justify-between">

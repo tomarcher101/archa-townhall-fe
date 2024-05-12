@@ -23,6 +23,7 @@ const NameModal = ({ submitUsername }: NameModalProps) => {
             if (e.key === 'Enter') submitUsername(nameInput);
           }}
           maxLength={50}
+          autoFocus
         />
         <div className="flex gap-2">
           <Button

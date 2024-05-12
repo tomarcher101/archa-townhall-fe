@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { postPost } from '../api';
 import Button from './Button';
+import { toast } from 'react-toastify';
 
 interface MessageInputProps {
   username: string;
@@ -15,10 +16,15 @@ const MessageInput = ({ username, onSubmit }: MessageInputProps) => {
   };
 
   const sendMessage = () => {
-    postPost(message, username).then((res) => {
-      onSubmit();
-      setMessage('');
-    });
+    postPost(message, username)
+      .then(() => {
+        onSubmit();
+        setMessage('');
+        toast.success('Message sent');
+      })
+      .catch((err) => {
+        toast.error(`${err.message} - Message could not be sent.`);
+      });
   };
 
   return (
@@ -30,6 +36,7 @@ const MessageInput = ({ username, onSubmit }: MessageInputProps) => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
+        autoFocus
       />
       <Button variant="primary" onClick={sendMessage}>
         Send
