@@ -8,10 +8,8 @@ const Feed = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    getPosts().then((response) => {
-      response.json().then((response) => {
-        setPosts(response);
-      });
+    getPosts().then((res) => {
+      setPosts(res.data);
     });
   }, []);
 

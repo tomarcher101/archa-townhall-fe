@@ -1,20 +1,22 @@
+import axios from 'axios';
+
 const API_URL = 'http://localhost:8000';
 
+const api = axios.create({
+  baseURL: API_URL,
+  timeout: 1000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 export const getPosts = async () => {
-  return fetch(`${API_URL}/posts/`);
+  return api.get('/posts/');
 };
 
 export const postPost = async (content: string, name: string) => {
-  return fetch(`${API_URL}/posts/`, {
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      content,
-      poster_name: name,
-    }),
+  return api.post('/posts/', {
+    content,
+    poster_name: name,
   });
 };

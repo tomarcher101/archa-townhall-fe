@@ -3,13 +3,11 @@ import { postPost } from '../api';
 
 const Input = () => {
   const [message, setMessage] = useState('');
-  const [name, setName] = useState('Tom');
+  const [name, setName] = useState('Anon');
 
   const sendMessage = () => {
-    postPost(message, name).then((response) => {
-      response.json().then((response) => {
-        console.log(response);
-      });
+    postPost(message, name).then((res) => {
+      console.log(res.data);
     });
   };
 
