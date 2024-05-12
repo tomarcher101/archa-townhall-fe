@@ -8,18 +8,25 @@ const Input = () => {
   const sendMessage = () => {
     postPost(message, name).then((res) => {
       console.log(res.data);
+      setMessage('');
     });
   };
 
   return (
-    <div>
+    <div className="flex w-full gap-2">
       <input
+        className="border-gray w-full rounded-md border px-2"
         type="text"
         placeholder="Send a message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button onClick={sendMessage}>Send</button>
+      <button
+        className="rounded-md bg-blue-600 px-4 py-1 text-white"
+        onClick={sendMessage}
+      >
+        Send
+      </button>
     </div>
   );
 };

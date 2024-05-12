@@ -7,14 +7,25 @@ import { Post } from '../types';
 const Feed = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
+  const scrollToBottom = () => {
+    const element = document.getElementById('scroll-to-bottom');
+    if (element) {
+      element.scrollIntoView();
+    }
+  };
+
   useEffect(() => {
     getPosts().then((res) => {
       setPosts(res.data);
     });
   }, []);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [posts]);
+
   return (
-    <div>
+    <div className="my-1 flex flex-col gap-2 overflow-y-scroll">
       {posts.map((post) => (
         <FeedItem
           key={post.id}
@@ -23,6 +34,7 @@ const Feed = () => {
           createdAt={new Date(post.created_at)}
         />
       ))}
+      <div id="scroll-to-bottom" />
     </div>
   );
 };
