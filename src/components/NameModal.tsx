@@ -10,7 +10,7 @@ const NameModal = ({ submitUsername }: NameModalProps) => {
 
   return (
     <div className="absolute flex h-screen w-screen items-center justify-center bg-slate-800">
-      <div className="flex flex-col gap-2 rounded-lg bg-white p-4">
+      <div className="m-4 flex flex-col gap-2 rounded-lg bg-white p-4">
         <h1 className="text-lg font-bold">Welcome to Townhall!</h1>
         <p>Please enter a screen name, or choose to message anonymously</p>
         <input
