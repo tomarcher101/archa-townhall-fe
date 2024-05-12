@@ -25,7 +25,7 @@ const Feed = () => {
   }, [posts]);
 
   return (
-    <div className="my-1 flex flex-col gap-2 overflow-y-scroll">
+    <div className="flex flex-col gap-2 overflow-y-scroll">
       {posts.map((post) => (
         <FeedItem
           key={post.id}

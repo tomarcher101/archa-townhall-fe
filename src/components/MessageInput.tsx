@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { postPost } from '../api';
+import Button from './Button';
 
-const Input = () => {
+interface MessageInputProps {
+  username: string;
+}
+
+const MessageInput = ({ username }: MessageInputProps) => {
   const [message, setMessage] = useState('');
-  const [name, setName] = useState('Anon');
 
   const sendMessage = () => {
-    postPost(message, name).then((res) => {
+    postPost(message, username).then((res) => {
       console.log(res.data);
       setMessage('');
     });
@@ -21,14 +25,11 @@ const Input = () => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button
-        className="rounded-md bg-blue-600 px-4 py-1 text-white"
-        onClick={sendMessage}
-      >
+      <Button variant="primary" onClick={sendMessage}>
         Send
-      </button>
+      </Button>
     </div>
   );
 };
 
-export default Input;
+export default MessageInput;
