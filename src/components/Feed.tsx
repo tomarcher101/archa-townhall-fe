@@ -4,9 +4,10 @@ import { Post } from '../types';
 
 interface FeedProps {
   posts: Post[];
+  username: string;
 }
 
-const Feed = ({ posts }: FeedProps) => {
+const Feed = ({ posts, username }: FeedProps) => {
   const scrollToBottom = () => {
     const element = document.getElementById('scroll-to-bottom');
     if (element) {
@@ -19,13 +20,14 @@ const Feed = ({ posts }: FeedProps) => {
   }, [posts]);
 
   return (
-    <div className="flex flex-col gap-2 overflow-y-scroll">
+    <div className="flex h-full flex-col gap-2 overflow-y-scroll">
       {posts.map((post) => (
         <FeedItem
           key={post.id}
           content={post.content}
           posterName={post.poster_name}
           createdAt={new Date(post.created_at)}
+          username={username}
         />
       ))}
       <div id="scroll-to-bottom" />

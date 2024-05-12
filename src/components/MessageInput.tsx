@@ -10,11 +10,14 @@ interface MessageInputProps {
 const MessageInput = ({ username, onSubmit }: MessageInputProps) => {
   const [message, setMessage] = useState('');
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') sendMessage();
+  };
+
   const sendMessage = () => {
     postPost(message, username).then((res) => {
-      console.log(res.data);
-      setMessage('');
       onSubmit();
+      setMessage('');
     });
   };
 
@@ -26,6 +29,7 @@ const MessageInput = ({ username, onSubmit }: MessageInputProps) => {
         placeholder="Send a message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <Button variant="primary" onClick={sendMessage}>
         Send
