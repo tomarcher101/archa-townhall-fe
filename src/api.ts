@@ -3,7 +3,7 @@ import axios from 'axios';
 // Put localhost or exposed ngrok API URL here
 const API_URL = 'http://localhost:8000';
 // const API_URL =
-//   'https://295e-2403-4800-3549-5f01-30a0-4b0c-fc3b-1d9c.ngrok-free.app/';
+//   'https://0bcc-2403-4800-3549-5f01-30a0-4b0c-fc3b-1d9c.ngrok-free.app';
 
 const api = axios.create({
   baseURL: API_URL,
