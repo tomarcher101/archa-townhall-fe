@@ -3,7 +3,7 @@ import { cn } from '../utils';
 interface FeedItemProps {
   content: string;
   posterName: string;
-  createdAt: Date;
+  createdAt: string;
   username: string;
 }
 
@@ -27,7 +27,7 @@ const FeedItem = ({
           {posterName}
         </span>
         <span className="text-gray-400 opacity-0 group-hover:opacity-100">
-          {createdAt.toLocaleTimeString()}
+          {new Date(createdAt).toLocaleTimeString()}
         </span>
       </div>
       <div className="break-words">

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import FeedItem from './FeedItem';
 import { Post } from '../types';
 
-interface FeedProps {
+export interface FeedProps {
   posts: Post[];
   username: string;
 }
@@ -26,7 +26,7 @@ const Feed = ({ posts, username }: FeedProps) => {
           key={post.id}
           content={post.content}
           posterName={post.poster_name}
-          createdAt={new Date(post.created_at)}
+          createdAt={post.created_at}
           username={username}
         />
       ))}

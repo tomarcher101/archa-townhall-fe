@@ -1,6 +1,6 @@
 import { cn } from '../utils';
 
-interface ButtonProps {
+export interface ButtonProps {
   variant: 'primary' | 'secondary' | 'danger';
   onClick: () => void;
   children: React.ReactNode;

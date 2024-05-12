@@ -5,3 +5,7 @@
 3. Install project dependencies `npm i`.
 4. Set the API_URL in `api.ts`.
 5. Run the app `npm run dev`.
+
+## Tests
+
+1. Run `npm run test`.

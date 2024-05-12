@@ -39,6 +39,7 @@ function App() {
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-sky-600 p-4">
       <ToastContainer />
+      {showModal && <NameModal submitUsername={submitUsername} />}
       <div className="flex h-full w-full max-w-[600px] flex-col gap-2 rounded-xl bg-white p-4 sm:max-h-[800px]">
         <div className="flex flex-col items-center">
           <h1 className="text-lg font-bold">Townhall</h1>
@@ -49,11 +50,6 @@ function App() {
         <Feed posts={posts} username={username} />
         <MessageInput username={username} onSubmit={refreshFeed} />
       </div>
-      {showModal &&
-        createPortal(
-          <NameModal submitUsername={submitUsername} />,
-          document.getElementById('modal-root') as HTMLElement,
-        )}
     </div>
   );
 }
