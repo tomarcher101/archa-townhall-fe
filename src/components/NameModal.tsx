@@ -19,6 +19,7 @@ const NameModal = ({ submitUsername }: NameModalProps) => {
           placeholder="Enter name"
           value={nameInput}
           onChange={(e) => setNameInput(e.target.value)}
+          maxLength={50}
         />
         <div className="flex gap-2">
           <Button

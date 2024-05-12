@@ -1,24 +1,18 @@
-// import posts from '../data/posts.json';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import FeedItem from './FeedItem';
-import { getPosts } from '../api';
 import { Post } from '../types';
 
-const Feed = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+interface FeedProps {
+  posts: Post[];
+}
 
+const Feed = ({ posts }: FeedProps) => {
   const scrollToBottom = () => {
     const element = document.getElementById('scroll-to-bottom');
     if (element) {
       element.scrollIntoView();
     }
   };
-
-  useEffect(() => {
-    getPosts().then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
 
   useEffect(() => {
     scrollToBottom();

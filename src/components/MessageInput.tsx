@@ -4,15 +4,17 @@ import Button from './Button';
 
 interface MessageInputProps {
   username: string;
+  onSubmit: () => void;
 }
 
-const MessageInput = ({ username }: MessageInputProps) => {
+const MessageInput = ({ username, onSubmit }: MessageInputProps) => {
   const [message, setMessage] = useState('');
 
   const sendMessage = () => {
     postPost(message, username).then((res) => {
       console.log(res.data);
       setMessage('');
+      onSubmit();
     });
   };
 

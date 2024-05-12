@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Feed from './components/Feed';
 import MessageInput from './components/MessageInput';
 import NameModal from './components/NameModal';
+import { getPosts } from './api';
+import { Post } from './types';
 
 function App() {
   const [username, setUsername] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(true);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const submitUsername = (value: string) => {
     setUsername(value);
     setShowModal(false);
   };
+
+  const refreshFeed = () => {
+    getPosts().then((res) => {
+      setPosts(res.data);
+    });
+  };
+
+  useEffect(() => {
+    refreshFeed();
+  }, []);
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-slate-300 p-4">
@@ -22,8 +35,8 @@ function App() {
             Welcome to The Townhall. Drop a message below!
           </p>
         </div>
-        <Feed />
-        <MessageInput username={username} />
+        <Feed posts={posts} />
+        <MessageInput username={username} onSubmit={refreshFeed} />
       </div>
       {showModal &&
         createPortal(
