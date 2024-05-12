@@ -23,7 +23,9 @@ const MessageInput = ({ username, onSubmit }: MessageInputProps) => {
         toast.success('Message sent');
       })
       .catch((err) => {
-        toast.error(`${err.message} - Message could not be sent.`);
+        const errorMessage =
+          err.response?.data?.content[0] || 'An error occurred';
+        toast.error(errorMessage);
       });
   };
 

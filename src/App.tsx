@@ -26,7 +26,9 @@ function App() {
         setPosts(res.data);
       })
       .catch((err) => {
-        toast.error(`${err.message} - Failed to fetch posts`);
+        const errorMessage =
+          err.response?.data?.content[0] || 'An error occurred';
+        toast.error(errorMessage);
       });
   };
 
